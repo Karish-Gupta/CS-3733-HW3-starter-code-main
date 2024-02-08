@@ -3,6 +3,7 @@ import './App.css';
 
 import {GetData} from "./components/DisplayData";
 
+//Initial fields/variables for the inputs to be placed in
 function App() {
     const [formData, setFormData] = useState({
         employeeName: '',
@@ -13,6 +14,10 @@ function App() {
         status:'unassigned',
     });
 
+    //to update the page with data
+    const [dataUpdateCounter, setDataUpdateCounter] = useState(0);
+
+    //handles submit button
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -28,6 +33,7 @@ function App() {
             if (!response.ok) {
                 throw new Error(`Error submitting form: ${response.status}`);
             }
+            setDataUpdateCounter((prevCounter) => prevCounter + 1);
 
             // Optionally, you can fetch updated data after a successful submission
             // const updatedData = await fetchData();
@@ -104,7 +110,7 @@ function App() {
                 </form>
             </div>
 
-            <GetData></GetData>
+            <GetData onUpdate={() => setDataUpdateCounter((prevCounter) => prevCounter + 1)} />
         </div>
     );
 }
