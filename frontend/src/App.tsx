@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import axios from 'axios';
+
 import {GetData} from "./components/DisplayData";
 
 function App() {
