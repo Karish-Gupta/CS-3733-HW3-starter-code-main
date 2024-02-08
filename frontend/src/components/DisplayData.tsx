@@ -8,9 +8,13 @@ function GenerateTableRows(tableData: cleaningService[]): JSX.Element[] {
             <td>{item.employeeName}</td>
             <td>{item.priorityLevel}</td>
             <td>{item.typeOfCleaning}</td>
+            <td>{item.status}</td>
         </tr>
     ));
 }
+
+
+
 
 const TableEdges: React.FC<{ tableData: cleaningService[] }> = ({tableData}) => {
     return (
@@ -22,6 +26,7 @@ const TableEdges: React.FC<{ tableData: cleaningService[] }> = ({tableData}) => 
                 <th>Employee Name</th>
                 <th>Priority Level</th>
                 <th>Cleaning Type</th>
+                <th>Status</th>
             </tr>
             </thead>
             <tbody>

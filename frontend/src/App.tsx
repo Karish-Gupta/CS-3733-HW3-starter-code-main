@@ -10,6 +10,7 @@ function App() {
         priorityLevel:'low',
         typeOfCleaning: 'regular',
         date: '',
+        status:'unassigned',
     });
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -45,15 +46,33 @@ function App() {
             <div className={"form-container"}>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="empolyeeName">Employee Name:</label>
-                    <input type="text" id="empolyeeName" name="employeeName" required value={formData.employeeName} onChange={(e) => setFormData({ ...formData, employeeName: e.target.value })}/>
-                    <br />
+                    <input type="text" id="empolyeeName" name="employeeName" required value={formData.employeeName}
+                           onChange={(e) => setFormData({...formData, employeeName: e.target.value})}/>
+                    <br/>
+
+                    <label htmlFor="status">Status:</label>
+                    <select
+                        id="status"
+                        name="status"
+                        required
+                        value={formData.status}
+                        onChange={(e) => setFormData({...formData, status: e.target.value})}
+                    >
+                        <option value="unassigned">Unassigned</option>
+                        <option value="assigned">Assigned</option>
+                        <option value="inProgress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <br/>
 
                     <label htmlFor="room">Room:</label>
-                    <input type="text" id="room" name="room" required value={formData.room} onChange={(e) => setFormData({ ...formData, room: e.target.value })}/>
-                    <br />
+                    <input type="text" id="room" name="room" required value={formData.room}
+                           onChange={(e) => setFormData({...formData, room: e.target.value})}/>
+                    <br/>
 
                     <label htmlFor="priorityLevel">Priority Level:</label>
-                    <select id={"priorityLevel"} name={"priorityLevel"} required value={formData.priorityLevel} onChange={(e) => setFormData({...formData, priorityLevel: e.target.value})}>
+                    <select id={"priorityLevel"} name={"priorityLevel"} required value={formData.priorityLevel}
+                            onChange={(e) => setFormData({...formData, priorityLevel: e.target.value})}>
                         <option value={"low"}>Low Priority</option>
                         <option value={"medium"}>Medium Priority</option>
                         <option value={"high"}>High Priority</option>
@@ -61,12 +80,13 @@ function App() {
                     <br/>
 
                     <label htmlFor="cleaningChoice">Cleaning Choice:</label>
-                    <select id="cleaningChoice" name="cleaningChoice" required value={formData.typeOfCleaning} onChange={(e) => setFormData({ ...formData, typeOfCleaning: e.target.value })}>
+                    <select id="cleaningChoice" name="cleaningChoice" required value={formData.typeOfCleaning}
+                            onChange={(e) => setFormData({...formData, typeOfCleaning: e.target.value})}>
                         <option value={"regular"}>Regular Cleaning</option>
                         <option value={"deep"}>Deep Cleaning</option>
-                        <option value={"emergency"} >Emergency Cleaning</option>
+                        <option value={"emergency"}>Emergency Cleaning</option>
                     </select>
-                    <br />
+                    <br/>
 
                     <label htmlFor="text">Date:</label>
                     <input
@@ -75,17 +95,17 @@ function App() {
                         name="date"
                         placeholder="MM/DD/YY"
                         value={formData.date}
-                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                        onChange={(e) => setFormData({...formData, date: e.target.value})}
                         required
                     />
-                    <br />
+                    <br/>
 
                     <button type="submit">Submit</button>
                 </form>
             </div>
 
             <GetData></GetData>
-            </div>
+        </div>
     );
 }
 

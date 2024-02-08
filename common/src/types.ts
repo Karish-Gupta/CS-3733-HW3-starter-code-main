@@ -4,4 +4,5 @@ export type cleaningService = {
     room: string;
     typeOfCleaning: string;
     date: string;
+    status: string;
 }
