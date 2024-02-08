@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {cleaningService} from "common/src/types";
+import {cleaningService} from "../../../common/src/types";
 function GenerateTableRows(tableData: cleaningService[]): JSX.Element[] {
     return tableData.map((item, index) => (
         <tr key={index}>
@@ -37,31 +37,24 @@ export const GetData = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                // Make a GET request to the API endpoint
                 const response = await fetch("/api/cleaning-request");
 
-                // Check if the request was successful (status code 2xx)
                 if (!response.ok) {
-                    throw new Error(`Error loading data: ${response.status}`);
+                    throw new Error(`Error loading data: ${response.status} - ${response.statusText}`);
                 }
 
-                // Parse the JSON response
                 const result = await response.json();
-
-                // Set the data in the state
                 setData(result);
-                console.log(result);
-            } catch (err) {
-                // Handle errors
-                console.log(err);
+            } catch (err: any) {
+                console.error(`Error loading data: ${err.message}`);
             } finally {
-                // Set loading to false, indicating that the request has completed
                 setLoading(false);
             }
         };
 
+
         fetchData().then();
-    }, []); //
+    }, []);
 
     if (loading) {
         return <div>Loading...</div>;

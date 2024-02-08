@@ -1,5 +1,7 @@
 import express, { Router, Request, Response } from "express";
-import {cleaningService} from "common/src/types";
+// @ts-ignore
+import {cleaningService} from "../../../common/src/types";
+
 
 const router: Router = express.Router();
 
@@ -14,15 +16,12 @@ router.post("/", async function (req: Request, res: Response) {
 
 router.get("/", async function (req: Request, res: Response) {
     try {
-        res.send(database);
-        res.sendStatus(200);
-    }
-    catch (error) {
+        res.status(200).json(database); // Send the JSON response here
+    } catch (error) {
         console.error(`Error exporting Service Request data: ${error}`);
         res.sendStatus(500);
     }
+});
 
-}
-);
 
 export default router;
