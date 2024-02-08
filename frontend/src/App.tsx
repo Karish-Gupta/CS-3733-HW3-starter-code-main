@@ -5,9 +5,10 @@ import {GetData} from "./components/DisplayData";
 
 function App() {
     const [formData, setFormData] = useState({
-        patientName: '',
+        employeeName: '',
         room: '',
-        typeOfCleaning: '',
+        priorityLevel:'low',
+        typeOfCleaning: 'regular',
         date: '',
     });
 
@@ -43,13 +44,21 @@ function App() {
         <div>
             <div className={"form-container"}>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="patientName">Patient Name:</label>
-                    <input type="text" id="patientName" name="patientName" required value={formData.patientName} onChange={(e) => setFormData({ ...formData, patientName: e.target.value })}/>
+                    <label htmlFor="empolyeeName">Employee Name:</label>
+                    <input type="text" id="empolyeeName" name="employeeName" required value={formData.employeeName} onChange={(e) => setFormData({ ...formData, employeeName: e.target.value })}/>
                     <br />
 
                     <label htmlFor="room">Room:</label>
                     <input type="text" id="room" name="room" required value={formData.room} onChange={(e) => setFormData({ ...formData, room: e.target.value })}/>
                     <br />
+
+                    <label htmlFor="priorityLevel">Priority Level:</label>
+                    <select id={"priorityLevel"} name={"priorityLevel"} required value={formData.priorityLevel} onChange={(e) => setFormData({...formData, priorityLevel: e.target.value})}>
+                        <option value={"low"}>Low Priority</option>
+                        <option value={"medium"}>Medium Priority</option>
+                        <option value={"high"}>High Priority</option>
+                    </select>
+                    <br/>
 
                     <label htmlFor="cleaningChoice">Cleaning Choice:</label>
                     <select id="cleaningChoice" name="cleaningChoice" required value={formData.typeOfCleaning} onChange={(e) => setFormData({ ...formData, typeOfCleaning: e.target.value })}>

@@ -3,10 +3,11 @@ import {cleaningService} from "../../../common/src/types";
 function GenerateTableRows(tableData: cleaningService[]): JSX.Element[] {
     return tableData.map((item, index) => (
         <tr key={index}>
-            <td>{tableData[index].date}</td>
-            <td>{tableData[index].room}</td>
-            <td>{tableData[index].patientName}</td>
-            <td>{tableData[index].typeOfCleaning}</td>
+            <td>{item.date}</td>
+            <td>{item.room}</td>
+            <td>{item.employeeName}</td>
+            <td>{item.priorityLevel}</td>
+            <td>{item.typeOfCleaning}</td>
         </tr>
     ));
 }
@@ -18,7 +19,8 @@ const TableEdges: React.FC<{ tableData: cleaningService[] }> = ({tableData}) => 
             <tr>
                 <th>Date</th>
                 <th>Room</th>
-                <th>Patient Name</th>
+                <th>Employee Name</th>
+                <th>Priority Level</th>
                 <th>Cleaning Type</th>
             </tr>
             </thead>

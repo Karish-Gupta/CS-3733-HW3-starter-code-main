@@ -1,5 +1,6 @@
 export type cleaningService = {
-    patientName: string;
+    employeeName: string;
+    priorityLevel: string;
     room: string;
     typeOfCleaning: string;
     date: string;
