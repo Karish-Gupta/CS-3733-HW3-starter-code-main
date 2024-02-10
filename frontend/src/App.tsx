@@ -35,10 +35,6 @@ function App() {
             }
             setDataUpdateCounter((prevCounter) => prevCounter + 1);
 
-            // Optionally, you can fetch updated data after a successful submission
-            // const updatedData = await fetchData();
-            // setData(updatedData);
-
             console.log('Form submitted successfully');
         } catch (error) {
             // @ts-ignore
